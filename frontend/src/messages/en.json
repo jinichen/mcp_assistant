@@ -1,0 +1,36 @@
+{
+  "common": {
+    "appName": "ASA AI Assistant",
+    "appDescription": "An intelligent assistant built on the Model Context Protocol"
+  },
+  "navigation": {
+    "home": "Home",
+    "chat": "Chat",
+    "settings": "Settings"
+  },
+  "chat": {
+    "placeholder": "Ask a question...",
+    "startConversation": "Start Your Conversation",
+    "startDescription": "Enter your question or upload an image, and our AI Assistant will help you get information and solve problems.",
+    "sendButton": "Send",
+    "uploadImage": "Upload Image",
+    "modelSelector": "AI Model",
+    "loading": "Thinking..."
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System",
+    "apiSettings": "API Settings",
+    "advanced": "Advanced Settings",
+    "save": "Save Changes"
+  },
+  "errors": {
+    "failedToLoad": "Failed to load",
+    "failedToSend": "Failed to send message",
+    "networkError": "Network error, please try again"
+  }
+} 

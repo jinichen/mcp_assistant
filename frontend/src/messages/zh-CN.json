@@ -1,0 +1,36 @@
+{
+  "common": {
+    "appName": "ASA AI 助手",
+    "appDescription": "基于模型上下文协议构建的智能助手"
+  },
+  "navigation": {
+    "home": "首页",
+    "chat": "对话",
+    "settings": "设置"
+  },
+  "chat": {
+    "placeholder": "输入问题...",
+    "startConversation": "开始对话",
+    "startDescription": "输入您的问题或上传图片，我们的AI助手将帮助您获取信息并解决问题。",
+    "sendButton": "发送",
+    "uploadImage": "上传图片",
+    "modelSelector": "AI 模型",
+    "loading": "思考中..."
+  },
+  "settings": {
+    "title": "设置",
+    "language": "语言",
+    "theme": "主题",
+    "dark": "深色",
+    "light": "浅色",
+    "system": "跟随系统",
+    "apiSettings": "API 设置",
+    "advanced": "高级设置",
+    "save": "保存更改"
+  },
+  "errors": {
+    "failedToLoad": "加载失败",
+    "failedToSend": "消息发送失败",
+    "networkError": "网络错误，请重试"
+  }
+} 

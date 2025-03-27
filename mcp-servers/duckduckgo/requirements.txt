@@ -1,0 +1,4 @@
+mcp
+langchain-community>=0.0.10
+langchain-core>=0.1.5
+duckduckgo-search>=4.1.1 

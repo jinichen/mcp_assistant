@@ -1,0 +1,17 @@
+{
+  "mcp_monitor": {
+    "transport": "stdio",
+    "command": "../mcp-servers/mcp-monitor/bin/mcp-monitor",
+    "args": []
+  },
+  "calculator": {
+    "transport": "stdio",
+    "command": "python",
+    "args": ["../mcp-servers/calculator/calculator_server.py"]
+  },
+  "duckduckgo": {
+    "transport": "stdio",
+    "command": "python",
+    "args": ["../mcp-servers/duckduckgo/duckduckgo_server.py"]
+  }
+} 

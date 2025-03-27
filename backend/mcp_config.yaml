@@ -1,0 +1,12 @@
+calculator:
+  transport: stdio
+  command: python
+  args: 
+    - ../mcp-servers/calculator/calculator_server.py
+
+# 其他MCP服务配置示例
+# search:
+#   transport: sse
+#   url: http://localhost:8001/sse
+#   headers:
+#     X-API-Key: your-api-key
