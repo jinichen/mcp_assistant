@@ -1,0 +1,29 @@
+{
+  "appearance": {
+    "title": "Appearance",
+    "subtitle": "Customize the look",
+    "themeMode": "Theme Mode",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "model": {
+    "title": "AI Model Information",
+    "subtitle": "Current AI model configuration",
+    "fixedModel": "Fixed Model Configuration",
+    "description": "This application is configured to use a fixed model set in the server environment.",
+    "currentModel": "Current Model:",
+    "modelNotLoaded": "Could not load model information",
+    "streamResponses": "Stream Responses",
+    "streamDescription": "Display responses in real-time"
+  },
+  "privacy": {
+    "title": "Privacy & Data",
+    "subtitle": "Manage data and privacy preferences",
+    "saveChat": "Save Chat History",
+    "saveChatDescription": "Keep conversation records",
+    "analytics": "Usage Analytics",
+    "analyticsDescription": "Share anonymous usage data"
+  },
+  "saveButton": "Save Settings"
+} 

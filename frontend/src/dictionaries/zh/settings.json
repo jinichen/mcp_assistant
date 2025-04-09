@@ -1,0 +1,29 @@
+{
+  "appearance": {
+    "title": "外观",
+    "subtitle": "自定义外观",
+    "themeMode": "主题模式",
+    "light": "浅色",
+    "dark": "深色",
+    "system": "系统"
+  },
+  "model": {
+    "title": "AI 模型信息",
+    "subtitle": "当前AI模型配置",
+    "fixedModel": "固定模型配置",
+    "description": "此应用程序配置为使用服务器环境中设置的固定模型。",
+    "currentModel": "当前模型：",
+    "modelNotLoaded": "无法加载模型信息",
+    "streamResponses": "流式响应",
+    "streamDescription": "实时显示响应"
+  },
+  "privacy": {
+    "title": "隐私与数据",
+    "subtitle": "管理数据和隐私偏好",
+    "saveChat": "保存聊天历史",
+    "saveChatDescription": "保存对话记录",
+    "analytics": "使用分析",
+    "analyticsDescription": "分享匿名使用数据"
+  },
+  "saveButton": "保存设置"
+} 

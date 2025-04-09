@@ -1,0 +1,26 @@
+{
+  "sidebar": {
+    "title": "ASA",
+    "navigation": {
+      "home": "Home",
+      "chat": "Chat",
+      "settings": "Settings"
+    },
+    "footer": {
+      "version": "AI Assistant v0.1"
+    }
+  },
+  "header": {
+    "languageToggle": "Change language",
+    "themeToggle": "Toggle theme"
+  },
+  "home": "Home",
+  "chat": "Chat",
+  "settings": "Settings",
+  "assistantReady": "AI Assistant Ready",
+  "assistantDesc": "Ask me anything to get started",
+  "userProfile": {
+    "settings": "Settings",
+    "logout": "Logout"
+  }
+} 

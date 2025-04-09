@@ -1,0 +1,27 @@
+{
+  "welcome": "Welcome to ASA AI Assistant",
+  "subtitle": "An intelligent AI assistant based on Model Context Protocol (MCP)",
+  "features": "Key Features",
+  "conversation": {
+    "title": "Natural Language Conversations",
+    "description": "Natural, fluid conversations with advanced AI models"
+  },
+  "multimodal": {
+    "title": "Multimodal Capabilities",
+    "description": "Image analysis and combined visual-textual interactions"
+  },
+  "tools": {
+    "title": "Tool Usage",
+    "description": "Use external tools and APIs to complete complex tasks"
+  },
+  "startChat": {
+    "title": "Start a Conversation",
+    "description": "Head to the chat page to start interacting with the AI assistant",
+    "button": "Start Chatting"
+  },
+  "settings": {
+    "title": "Customize Settings",
+    "description": "Adjust application settings and interface theme",
+    "button": "Go to Settings"
+  }
+} 

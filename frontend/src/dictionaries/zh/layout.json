@@ -1,0 +1,26 @@
+{
+  "sidebar": {
+    "title": "ASA",
+    "navigation": {
+      "home": "主页",
+      "chat": "聊天",
+      "settings": "设置"
+    },
+    "footer": {
+      "version": "AI 助手 v0.1"
+    }
+  },
+  "header": {
+    "languageToggle": "切换语言",
+    "themeToggle": "切换主题"
+  },
+  "home": "主页",
+  "chat": "聊天",
+  "settings": "设置",
+  "assistantReady": "AI 助手已准备",
+  "assistantDesc": "随时为您提供帮助",
+  "userProfile": {
+    "settings": "设置",
+    "logout": "退出"
+  }
+} 

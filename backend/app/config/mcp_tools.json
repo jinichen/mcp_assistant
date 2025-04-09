@@ -1,0 +1,20 @@
+{
+  "math": {
+    "command": "python",
+    "args": ["app/tools/math/math_server.py"],
+    "transport": "stdio",
+    "description": "Solves mathematical expressions and equations"
+  },
+  "weather": {
+    "command": "python",
+    "args": ["app/tools/weather/weather_server.py"],
+    "transport": "stdio",
+    "description": "Provides weather information for locations around the world"
+  },
+  "test_generator": {
+    "command": "python",
+    "args": ["app/tools/TestScenarioGenerator"],
+    "transport": "stdio",
+    "description": "Generates test scenarios and scripts from API specifications"
+  }
+} 

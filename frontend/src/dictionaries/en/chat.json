@@ -1,0 +1,63 @@
+{
+  "login": {
+    "title": "Login to Chat",
+    "username": "Username",
+    "password": "Password",
+    "button": "Login",
+    "error": "Login failed. Please check your credentials.",
+    "usernamePlaceholder": "Enter your username",
+    "passwordPlaceholder": "Enter your password",
+    "noAccount": "Don't have an account?",
+    "registerLink": "Register now",
+    "haveAccount": "Already have an account?",
+    "loginLink": "Login here"
+  },
+  "register": {
+    "title": "Create Account",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "button": "Register",
+    "error": "Registration failed. Please try again.",
+    "usernamePlaceholder": "Choose a username",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Create a password (min 8 characters)",
+    "success": "Registration successful! You can now login."
+  },
+  "chat": {
+    "welcome": "Welcome to ASA AI Assistant",
+    "description": "Your powerful AI assistant for everyday tasks and complex challenges.",
+    "inputPlaceholder": "Ask me anything...",
+    "thinking": "Thinking...",
+    "uploadImage": "Upload an image",
+    "send": "Send",
+    "errorMessage": "Sorry, I couldn't process your request. Please try again later.",
+    "disclaimer": "AI responses may not always be accurate. Verify important information."
+  },
+  "tools": {
+    "default": "Default AI",
+    "math": "Math Tool",
+    "weather": "Weather Tool",
+    "using": "Using {name} to process your request...",
+    "processing": "Processing request",
+    "result": "Tool result"
+  },
+  "welcomePrompts": [
+    "Calculate 123 multiplied by 456",
+    "What's the weather like in New York today?",
+    "Tell me about the Model Context Protocol",
+    "Explain the basic principles of quantum computing",
+    "Write a short poem about artificial intelligence",
+    "How to build a modern website using React and Next.js"
+  ],
+  "loginToChat": "Login to chat",
+  "registerToChat": "Register to chat",
+  "loginTitle": "Login",
+  "registerTitle": "Register",
+  "loginButton": "Login",
+  "registerButton": "Register",
+  "switchToRegister": "Don't have an account? Register",
+  "switchToLogin": "Already have an account? Login",
+  "errorOccurred": "An error occurred",
+  "invalidCredentials": "Invalid credentials. Please try again."
+} 

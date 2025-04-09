@@ -1,0 +1,63 @@
+{
+  "login": {
+    "title": "登录聊天",
+    "username": "用户名",
+    "password": "密码",
+    "button": "登录",
+    "error": "登录失败。请检查您的凭据。",
+    "usernamePlaceholder": "输入您的用户名",
+    "passwordPlaceholder": "输入您的密码",
+    "noAccount": "还没有账户？",
+    "registerLink": "立即注册",
+    "haveAccount": "已有账户？",
+    "loginLink": "登录"
+  },
+  "register": {
+    "title": "创建账户",
+    "username": "用户名",
+    "email": "电子邮箱",
+    "password": "密码",
+    "button": "注册",
+    "error": "注册失败。请重试。",
+    "usernamePlaceholder": "选择一个用户名",
+    "emailPlaceholder": "输入您的电子邮箱",
+    "passwordPlaceholder": "创建密码（至少8个字符）",
+    "success": "注册成功！您现在可以登录了。"
+  },
+  "chat": {
+    "welcome": "欢迎使用 ASA AI 助手",
+    "description": "您强大的AI助手，可以处理日常任务和复杂挑战。",
+    "inputPlaceholder": "问我任何问题...",
+    "thinking": "思考中...",
+    "uploadImage": "上传图片",
+    "send": "发送",
+    "errorMessage": "抱歉，我无法处理您的请求。请稍后再试。",
+    "disclaimer": "AI回答可能并不总是准确的。请验证重要信息。"
+  },
+  "tools": {
+    "default": "默认AI",
+    "math": "数学工具",
+    "weather": "天气工具",
+    "using": "正在使用{name}处理您的请求...",
+    "processing": "处理中",
+    "result": "工具结果"
+  },
+  "welcomePrompts": [
+    "计算123乘以456",
+    "北京今天的天气怎么样",
+    "介绍一下Model Context Protocol",
+    "解释量子计算的基本原理",
+    "写一首关于人工智能的短诗",
+    "如何使用React和Next.js构建现代网站"
+  ],
+  "loginToChat": "登录聊天",
+  "registerToChat": "注册聊天",
+  "loginTitle": "登录",
+  "registerTitle": "注册",
+  "loginButton": "登录",
+  "registerButton": "注册",
+  "switchToRegister": "还没有账户？去注册",
+  "switchToLogin": "已有账户？去登录",
+  "errorOccurred": "发生错误",
+  "invalidCredentials": "无效的凭据。请重试。"
+} 

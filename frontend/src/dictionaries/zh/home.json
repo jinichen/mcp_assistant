@@ -1,0 +1,27 @@
+{
+  "welcome": "欢迎使用 ASA AI 助手",
+  "subtitle": "基于模型上下文协议(MCP)的智能AI助手",
+  "features": "主要功能",
+  "conversation": {
+    "title": "自然语言对话",
+    "description": "与先进AI模型进行自然流畅的对话"
+  },
+  "multimodal": {
+    "title": "多模态能力",
+    "description": "图像分析和视觉文本交互能力"
+  },
+  "tools": {
+    "title": "工具使用",
+    "description": "使用外部工具和API完成复杂任务"
+  },
+  "startChat": {
+    "title": "开始对话",
+    "description": "前往聊天页面开始与AI助手交互",
+    "button": "开始聊天"
+  },
+  "settings": {
+    "title": "自定义设置",
+    "description": "调整应用设置和界面主题",
+    "button": "前往设置"
+  }
+} 
