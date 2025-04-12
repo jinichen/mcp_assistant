@@ -20,13 +20,13 @@ export default function MainLayout({ children, dictionary }: MainLayoutProps) {
         <Sidebar className="fixed inset-y-0 z-30 transition-all duration-300 border-r border-primary/10 shadow-sm shadow-primary/5" />
 
         {/* Main content */}
-        <div className="flex-1 ml-[240px]">
+        <div className="flex-1 ml-[240px] h-screen overflow-hidden">
           {/* Top navigation */}
           <MainNav dictionary={dictionary} className="sticky top-0 z-20 border-b border-primary/10 bg-background/80 backdrop-blur-sm shadow-sm" />
           
           {/* Page content */}
-          <main className="flex-1 transition-all duration-300 page-transition-enter page-transition-enter-active">
-            <div className="max-w-7xl mx-auto h-[calc(100vh-5rem)]">
+          <main className="flex-1 transition-all duration-300 page-transition-enter page-transition-enter-active h-[calc(100vh-4rem)]">
+            <div className="max-w-7xl mx-auto h-full">
               {children}
             </div>
           </main>

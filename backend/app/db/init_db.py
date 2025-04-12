@@ -3,6 +3,7 @@ from sqlalchemy.exc import ProgrammingError
 from app.db.session import engine, Base
 from app.models.message import Message
 from app.models.user import User
+from app.models.file import File
 
 def init_db():
     """Initialize the database with required tables."""

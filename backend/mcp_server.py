@@ -9,9 +9,12 @@ import json
 from typing import List, Optional, Dict, Any
 
 import uvicorn
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from fastapi.responses import StreamingResponse
+from langchain_core.runnables.config import RunnableConfig
+from langchain_core.messages import HumanMessage, AIMessage
 
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langgraph.prebuilt import create_react_agent
@@ -119,8 +122,14 @@ async def startup_event():
         model_name = settings.DEFAULT_OPENAI_MODEL
         if settings.DEFAULT_LLM_PROVIDER == "google":
             from langchain_google_genai import ChatGoogleGenerativeAI
+            # 获取模型名称
+            google_model = settings.DEFAULT_GOOGLE_MODEL or "gemini-1.5-pro"
+            # 移除可能存在的"models/"前缀，因为langchain_google_genai会自动添加
+            if google_model.startswith("models/"):
+                google_model = google_model[7:]
+            
             model = ChatGoogleGenerativeAI(
-                model=settings.DEFAULT_GOOGLE_MODEL or "gemini-1.5-pro",
+                model=google_model,
                 temperature=0.7,
                 google_api_key=settings.GOOGLE_API_KEY
             )
@@ -128,7 +137,8 @@ async def startup_event():
             model = ChatOpenAI(
                 model=model_name,
                 temperature=0.7,
-                api_key=settings.OPENAI_API_KEY
+                api_key=settings.OPENAI_API_KEY,
+                base_url=settings.OPENAI_BASE_URL
             )
         
         # Initialize the agent with tools from MCP client
@@ -209,6 +219,7 @@ async def complete_chat(request: MCPChatRequest):
         response = await mcp_agent.ainvoke({"messages": input_messages})
         
         # Extract the response content
+        result = ""
         if hasattr(response, 'content'):
             # Direct LangChain message object
             result = response.content
@@ -232,14 +243,125 @@ async def complete_chat(request: MCPChatRequest):
         
         logger.info(f"Agent response: {result[:100]}...")
         
-        # Return results
+        # 除去可能的标签和引号
+        clean_result = result
+        if '<think>' in clean_result and '</think>' in clean_result:
+            think_start = clean_result.find('<think>')
+            think_end = clean_result.find('</think>') + len('</think>')
+            clean_result = clean_result[:think_start] + clean_result[think_end:]
+            clean_result = clean_result.strip()
+        
+        # 修正错误的换行符
+        clean_result = clean_result.replace('/n', '\n')
+        
+        # Return only clean content
         return ChatResponse(
-            message=result,
+            message=clean_result,
             tool_info={"agent": "react_agent"}
         )
     except Exception as e:
         logger.error(f"Error processing chat request: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Failed to process chat request: {str(e)}")
+
+@app.post("/api/v1/mcp/stream")
+async def stream_chat(request: MCPChatRequest):
+    """使用React代理处理流式聊天请求"""
+    global mcp_agent
+    if not mcp_agent:
+        raise HTTPException(status_code=500, detail="MCP agent not initialized")
+    
+    # 检查消息是否为空
+    if not request.messages or len(request.messages) == 0:
+        raise HTTPException(status_code=400, detail="No messages provided")
+    
+    # 获取用户消息
+    user_message = request.messages[-1].content
+    if not user_message or user_message.strip() == "":
+        raise HTTPException(status_code=400, detail="Empty user message")
+    
+    async def generate():
+        try:
+            logger.info(f"Processing streaming chat request with MCP agent")
+            logger.info(f"User message: {user_message}")
+            
+            # 转换为代理期望的格式
+            input_messages = []
+            for msg in request.messages:
+                if msg.role == "user":
+                    input_messages.append({"type": "human", "content": msg.content})
+                elif msg.role == "assistant":
+                    input_messages.append({"type": "ai", "content": msg.content})
+            
+            # 准备流式配置
+            config = RunnableConfig(
+                callbacks=None,
+                tags=["mcp", "streaming"],
+            )
+            
+            # 使用流式接口调用代理
+            async for chunk in mcp_agent.astream({"messages": input_messages}, config=config):
+                # 提取块内容
+                result = ""
+                if hasattr(chunk, 'content'):
+                    result = chunk.content
+                elif isinstance(chunk, dict):
+                    # Handle different dict formats
+                    if "messages" in chunk:
+                        # Get the last message
+                        messages = chunk["messages"]
+                        if messages and len(messages) > 0:
+                            last_msg = messages[-1]
+                            if isinstance(last_msg, dict) and "content" in last_msg:
+                                result = last_msg["content"]
+                            elif hasattr(last_msg, "content"):
+                                result = last_msg.content
+                            else:
+                                result = str(last_msg)
+                        else:
+                            result = ""
+                    elif "content" in chunk:
+                        result = chunk["content"]
+                    elif "output" in chunk:
+                        result = chunk["output"]
+                    else:
+                        result = str(chunk)
+                else:
+                    result = str(chunk)
+                
+                # 清理结果内容
+                clean_result = result
+                
+                # 清理思考标签
+                if '<think>' in clean_result:
+                    think_parts = clean_result.split('<think>')
+                    for i in range(1, len(think_parts)):
+                        if '</think>' in think_parts[i]:
+                            think_parts[i] = think_parts[i].split('</think>', 1)[1]
+                    clean_result = ''.join(think_parts)
+                
+                # 修正错误的换行符
+                clean_result = clean_result.replace('/n', '\n')
+                
+                # 发送干净的内容块
+                if clean_result:
+                    yield f"data: {json.dumps({'content': clean_result})}\n\n"
+            
+            # 发送结束事件
+            yield "data: [DONE]\n\n"
+        except Exception as e:
+            logger.error(f"Error in streaming chat: {str(e)}", exc_info=True)
+            yield f"data: {json.dumps({'error': str(e)})}\n\n"
+            yield "data: [DONE]\n\n"
+    
+    return StreamingResponse(
+        generate(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "Content-Type": "text/event-stream"
+        }
+    )
 
 # If this file is run directly, start the server
 if __name__ == "__main__":

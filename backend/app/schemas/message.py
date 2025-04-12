@@ -28,6 +28,7 @@ class MessageInDB(MessageBase):
 class ChatRequest(BaseModel):
     conversation_id: str
     messages: List[MessageBase]
+    stream: Optional[bool] = False
 
 class ChatResponse(BaseModel):
     conversation_id: str

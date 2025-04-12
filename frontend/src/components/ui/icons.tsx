@@ -1,5 +1,5 @@
 import React from "react";
-import { Moon, Sun, Languages, MoreHorizontal, Globe } from "lucide-react";
+import { Moon, Sun, Languages, MoreHorizontal, Globe, File, Image } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -19,6 +19,9 @@ export {
   User2, 
   MessageSquare
 } from "lucide-react";
+
+export { File } from "lucide-react";
+export { Image } from "lucide-react";
 
 // Label component
 interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {

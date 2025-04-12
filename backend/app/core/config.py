@@ -26,25 +26,38 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
     # LLM Provider Settings
-    DEFAULT_LLM_PROVIDER: str = "openai"
-    DEFAULT_OPENAI_MODEL: str = "gpt-3.5-turbo"
-    DEFAULT_GOOGLE_MODEL: str = "gemini-pro"
-    DEFAULT_ANTHROPIC_MODEL: str = "claude-3-opus-20240229"
-    DEFAULT_NVIDIA_MODEL: str = "mixtral_8x7b"
+    DEFAULT_LLM_PROVIDER: str = os.getenv("DEFAULT_LLM_PROVIDER", "openai")
+    DEFAULT_OPENAI_MODEL: str = os.getenv("DEFAULT_OPENAI_MODEL", "gpt-3.5-turbo")
+    DEFAULT_GOOGLE_MODEL: str = os.getenv("DEFAULT_GOOGLE_MODEL", "gemini-pro")
+    DEFAULT_ANTHROPIC_MODEL: str = os.getenv("DEFAULT_ANTHROPIC_MODEL", "claude-3-opus-20240229")
+    DEFAULT_NVIDIA_MODEL: str = os.getenv("DEFAULT_NVIDIA_MODEL", "mixtral_8x7b")
     
     # LLM API keys
-    OPENAI_API_KEY: Optional[str] = None
-    OPENAI_BASE_URL: Optional[str] = "https://api.openai.com/v1"
-    GOOGLE_API_KEY: Optional[str] = None
-    ANTHROPIC_API_KEY: Optional[str] = None
-    NVIDIA_API_KEY: Optional[str] = None
-    NVIDIA_BASE_URL: Optional[str] = "https://integrate.api.nvidia.com/v1/chat/completions"
+    OPENAI_API_KEY: Optional[str] = os.getenv("OPENAI_API_KEY")
+    OPENAI_BASE_URL: Optional[str] = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
+    GOOGLE_API_KEY: Optional[str] = os.getenv("GOOGLE_API_KEY")
+    ANTHROPIC_API_KEY: Optional[str] = os.getenv("ANTHROPIC_API_KEY")
+    NVIDIA_API_KEY: Optional[str] = os.getenv("NVIDIA_API_KEY")
+    NVIDIA_BASE_URL: Optional[str] = os.getenv("NVIDIA_BASE_URL", "https://integrate.api.nvidia.com/v1/chat/completions")
+    
+    # LLM Parameters
+    LLM_TEMPERATURE: float = float(os.getenv("LLM_TEMPERATURE", "0.7"))
+    LLM_REQUEST_TIMEOUT: int = int(os.getenv("LLM_REQUEST_TIMEOUT", "60"))
     
     # LangChain settings
-    LANGCHAIN_API_KEY: Optional[str] = None
-    LANGCHAIN_ENDPOINT: Optional[str] = None
-    LANGCHAIN_PROJECT: Optional[str] = None
-    LANGCHAIN_TRACING_V2: Optional[str] = None
+    LANGCHAIN_API_KEY: Optional[str] = os.getenv("LANGCHAIN_API_KEY")
+    LANGCHAIN_ENDPOINT: Optional[str] = os.getenv("LANGCHAIN_ENDPOINT")
+    LANGCHAIN_PROJECT: Optional[str] = os.getenv("LANGCHAIN_PROJECT")
+    LANGCHAIN_TRACING_V2: Optional[str] = os.getenv("LANGCHAIN_TRACING_V2")
+    
+    # MCP settings
+    MCP_CONFIG_PATH: str = "app/config/mcp_tools.json"
+    
+    # File upload settings
+    UPLOAD_DIR: str = "uploads"
+    DOCUMENTS_SUBDIR: str = "documents"
+    IMAGES_SUBDIR: str = "images"
+    METADATA_SUBDIR: str = "metadata"
     
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 

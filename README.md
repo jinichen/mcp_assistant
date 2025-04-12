@@ -1,119 +1,132 @@
 # AI Assistant
 
-A modern, extensible AI assistant platform with multi-modal capabilities and tool integration.
-
 ## Overview
-
-AI Assistant is a full-stack application that provides an intelligent conversational interface powered by multiple language models. It features a clean, responsive UI, robust authentication, and modular tool integration through the Model Control Protocol (MCP).
+AI Assistant is a modern full-stack application with multi-modal capabilities, supporting multiple language models (LLMs) and tool integrations. It provides an intuitive interface for interacting with AI models and supports various specialized tools such as math calculations, weather queries, and more.
 
 ## Key Features
-
-- **Multi-LLM Support**: Seamlessly switch between OpenAI, Google Gemini, Anthropic Claude, and NVIDIA AI models
-- **MCP Tool Integration**: Extend capabilities with specialized tools for math, weather, and more
-- **Responsive Design**: Clean, intuitive interface that works across devices
-- **Authentication System**: Secure user accounts and conversation management
-- **Multilingual Support**: Interface available in English and Chinese
-- **Real-time Chat**: Immediate responses with proper error handling
+- **Multi-LLM Support**: Integration with OpenAI, Google, Anthropic, and NVIDIA models
+- **MCP Tool Integration**: Specialized tools via the Model Control Protocol (MCP)
+- **Responsive Design**: Modern UI for both desktop and mobile devices
+- **Authentication System**: Secure user authentication and session management
+- **Multilingual Support**: English and Chinese interfaces
+- **Real-time Chat**: Fluid conversation experience
+- **File Upload**: Document and image upload support for AI analysis and processing
 
 ## System Architecture
+AI Assistant uses a three-tier architecture:
 
-The application follows a modern three-tier architecture:
+1. **Frontend**: React application built with Next.js
+   - Responsive design with Tailwind CSS
+   - Internationalization support
+   - Real-time chat interface
+   - File upload and management components
 
-- **Frontend**: Next.js with React and Tailwind CSS
-- **Backend**: FastAPI Python service 
-- **Database**: PostgreSQL for data persistence
+2. **Backend**: Python service using FastAPI
+   - RESTful API
+   - Multi-LLM integration
+   - MCP tool management
+   - User authentication
+   - File upload handling
+
+3. **Database**: PostgreSQL
+   - User management
+   - Session storage
+   - Tool configurations
+   - File metadata storage
 
 ## Installation
-
-For detailed installation instructions, see the [Installation Manual](INSTALLATION.md).
-
-Quick setup:
-
+Quick start:
 ```bash
-# Clone repository
-git clone https://github.com/yourusername/ia-assiatant.git
-cd ia-assiatant
+# Clone the repository
+git clone https://github.com/yourusername/ia-assistant.git
+cd ia-assistant
 
 # Setup backend
 cd backend
 python -m venv venv
-source venv/bin/activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 # Setup frontend
 cd ../frontend
 npm install
-npm run dev
 ```
+
+For detailed installation instructions, refer to the [Installation Guide](INSTALLATION.md).
 
 ## MCP Tool Integration
+AI Assistant integrates various specialized tools through the Model Control Protocol (MCP):
 
-The Model Control Protocol (MCP) allows the assistant to use specialized tools like:
+### Available Tools
+- **Math Tool**: Perform mathematical calculations
+- **Weather Tool**: Retrieve weather information
+- **More Tools**: Continuously being integrated...
 
-- **Math Tool**: Evaluate complex mathematical expressions
-- **Weather Tool**: Retrieve weather information for locations
-- **Test Scenario Generator**: Generate test scripts from API specifications
-
-To use these tools, start the MCP server in addition to the main backend:
-
+### Start MCP Server
 ```bash
 cd backend
-uvicorn mcp_server:app --reload --host 0.0.0.0 --port 8001
+python mcp_server.py
 ```
 
-## Usage
+## File Upload Feature
+AI Assistant supports uploading various file formats:
 
-1. Access the frontend at http://localhost:3000
+### Supported File Types
+- **Documents**: PDF, DOCX, TXT, MD, CSV, JSON
+- **Images**: JPG, JPEG, PNG, GIF, BMP, WEBP
+
+### How to Use
+1. Click the upload button in the chat interface
+2. Select the file type (document or image)
+3. Choose a file from your local storage
+4. Once uploaded, the file will appear in the chat, and the AI can analyze its content
+
+## Usage Guide
+1. Access the frontend: `http://localhost:3000`
 2. Create an account or log in
-3. Start a new conversation
-4. Enter queries that might utilize tools or general knowledge
-
-Example tool-based queries:
-- "Calculate 123 multiplied by 456"
-- "What's the weather in New York today?"
+3. Start chatting, for example:
+   - "Calculate 123 + 456"
+   - "What's the weather in New York?"
+   - "Use the math tool to calculate 789 * 321"
+   - "Upload a file and analyze its content"
 
 ## Development
-
 ### Directory Structure
-
 ```
-ia-assiatant/
-├── backend/
-│   ├── app/
-│   │   ├── api/
-│   │   ├── core/
-│   │   ├── db/
-│   │   ├── routers/
-│   │   ├── services/
-│   │   └── tools/
-│   ├── mcp_server.py
+ia-assistant/
+├── backend/           # FastAPI backend service
+│   ├── app/          # Application code
+│   ├── tests/        # Test files
 │   └── requirements.txt
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── app/
-│   │   ├── components/
-│   │   ├── context/
-│   │   ├── dictionaries/
-│   │   ├── hooks/
-│   │   └── lib/
+├── frontend/         # Next.js frontend application
+│   ├── src/         # Source code
+│   ├── public/      # Static assets
 │   └── package.json
-└── README.md
+└── README.md        # Project documentation
 ```
 
 ### Configuration
+#### Backend Configuration
+In `backend/.env`:
+```env
+DATABASE_URL=postgresql://user:password@localhost:5432/ia_assistant
+OPENAI_API_KEY=your_openai_key
+GOOGLE_API_KEY=your_google_key
+```
 
-- Backend settings are managed through environment variables in `.env`
-- Frontend environment settings are in `.env.local`
-- MCP tool configuration is in `backend/app/config/mcp_tools.json`
+#### Frontend Configuration
+In `frontend/.env.local`:
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
 
 ## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-[MIT License](LICENSE)
-
-## Acknowledgments
-
-- Built with modern web technologies and AI services
-- Uses LangChain for model integrations
-- MCP adapters for extensible tool support 
+## Acknowledgements
+Thanks to the following technologies and services:
+- Next.js and React
+- FastAPI
+- PostgreSQL
+- AI services from OpenAI, Google, Anthropic, and NVIDIA
+- Tailwind CSS 

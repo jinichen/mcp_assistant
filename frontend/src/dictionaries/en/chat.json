@@ -59,5 +59,30 @@
   "switchToRegister": "Don't have an account? Register",
   "switchToLogin": "Already have an account? Login",
   "errorOccurred": "An error occurred",
-  "invalidCredentials": "Invalid credentials. Please try again."
+  "invalidCredentials": "Invalid credentials. Please try again.",
+  "logout": "Logout",
+  "using_tool": "Using tool",
+  
+  "file": {
+    "title": "Your Files",
+    "manage": "Upload and manage files",
+    "upload": "Upload file",
+    "upload_document": "Upload document",
+    "upload_image": "Upload image",
+    "upload_success": "File uploaded successfully",
+    "view_files": "View files",
+    "no_files": "No files uploaded yet. Upload files to see them here.",
+    "uploading": "Uploading...",
+    "upload_fail": "Upload failed",
+    "refresh": "Refresh",
+    "fetch_error": "Error fetching files",
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "delete_success": "File deleted",
+    "delete_success_message": "The file has been successfully deleted.",
+    "delete_error": "Error deleting file",
+    "delete_confirm_title": "Delete File",
+    "delete_confirm_message": "Are you sure you want to delete this file? This action cannot be undone.",
+    "cancel": "Cancel"
+  }
 } 

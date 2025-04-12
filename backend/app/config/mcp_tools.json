@@ -1,20 +1,36 @@
 {
   "math": {
     "command": "python",
-    "args": ["app/tools/math/math_server.py"],
+    "args": [
+      "/Users/chenhongbo/ia-assiatant/mcp_server/math/math_server.py"
+    ],
     "transport": "stdio",
-    "description": "Solves mathematical expressions and equations"
+    "description": "Solves mathematical expressions and equations",
+    "timeout": 120
   },
   "weather": {
     "command": "python",
-    "args": ["app/tools/weather/weather_server.py"],
+    "args": [
+      "/Users/chenhongbo/ia-assiatant/mcp_server/weather/weather_server.py"
+    ],
     "transport": "stdio",
-    "description": "Provides weather information for locations around the world"
+    "description": "Provides weather information for locations around the world",
+    "timeout": 120
   },
   "test_generator": {
     "command": "python",
-    "args": ["app/tools/TestScenarioGenerator"],
+    "args": [
+      "/Users/chenhongbo/ia-assiatant/mcp_server/TestScenarioGenerator/__init__.py"
+    ],
     "transport": "stdio",
-    "description": "Generates test scenarios and scripts from API specifications"
+    "description": "Generates test scenarios for given functionality",
+    "timeout": 120
+  },
+  "duckduckgo": {
+    "transport": "stdio",
+    "command": "python",
+    "args": ["/Users/chenhongbo/ia-assiatant/mcp_server/duckduckgo/duckduckgo_server.py"],
+    "description": "Provides search results from DuckDuckGo",
+    "timeout": 120
   }
-} 
+}

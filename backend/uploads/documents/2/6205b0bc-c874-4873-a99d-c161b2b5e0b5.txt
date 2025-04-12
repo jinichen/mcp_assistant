@@ -1,0 +1,204 @@
+{
+    "apiDefinitionId": "ead76496-f8bc-48d3-96ae-0b33efdaed03",
+    "name": "空ID数组",
+    "priority": "P0",
+    "active": true,
+    "tags": "[]",
+    "uuid": "cad63657-d15d-8a1f-e1d5-2871fc0d5228",
+    "caseStatus": "Underway",
+    "type": "AddCase",
+    "request": {
+        "type": "HTTPSamplerProxy",
+        "clazzName": "io.metersphere.api.dto.definition.request.sampler.MsHTTPSamplerProxy",
+        "id": "b300dc2c-26a4-4082-7761-0446d90bad18",
+        "resourceId": null,
+        "name": "用户删除",
+        "label": null,
+        "referenced": null,
+        "active": false,
+        "index": null,
+        "enable": true,
+        "refType": null,
+        "hashTree": [
+            {
+                "type": "Assertions",
+                "clazzName": "io.metersphere.api.dto.definition.request.assertions.MsAssertions",
+                "id": "7e2efe09-09f6-6aae-86e8-d8fda0d8edb8",
+                "resourceId": "cd1ce5d9-78dd-40ea-b39b-6e1b26a9fa3c",
+                "name": null,
+                "label": null,
+                "referenced": null,
+                "active": false,
+                "index": null,
+                "enable": true,
+                "refType": null,
+                "hashTree": null,
+                "projectId": null,
+                "isMockEnvironment": false,
+                "environmentId": null,
+                "pluginId": null,
+                "stepName": null,
+                "parent": null,
+                "scenarioAss": false,
+                "regex": [
+
+                ],
+                "jsonPath": [
+
+                ],
+                "jsr223": [
+
+                ],
+                "xpath2": [
+
+                ],
+                "duration": {
+                    "enable": true,
+                    "type": "Duration",
+                    "value": 0,
+                    "valid": false
+                },
+                "document": {
+                    "enable": true,
+                    "type": "JSON",
+                    "data": {
+                        "jsonFollowAPI": "false",
+                        "xmlFollowAPI": "false",
+                        "json": [
+
+                        ],
+                        "xml": [
+
+                        ],
+                        "assertionName": null,
+                        "include": false,
+                        "typeVerification": false
+                    },
+                    "nodeType": "Case",
+                    "apiDefinitionId": "ead76496-f8bc-48d3-96ae-0b33efdaed03"
+                },
+                "mockEnvironment": false
+            }
+        ],
+        "projectId": "0e5d6b75-e125-4bd3-8485-fc2bcc3162c0",
+        "isMockEnvironment": false,
+        "environmentId": null,
+        "pluginId": null,
+        "stepName": null,
+        "parent": null,
+        "protocol": "HTTP",
+        "domain": null,
+        "port": null,
+        "method": "POST",
+        "path": "/system/user/delete",
+        "connectTimeout": "60000",
+        "responseTimeout": "60000",
+        "headers": [
+            {
+                "name": "Content-Type",
+                "value": "application/json;charset=UTF-8",
+                "type": null,
+                "files": null,
+                "description": null,
+                "contentType": "",
+                "enable": true,
+                "urlEncode": false,
+                "required": false,
+                "min": null,
+                "max": null,
+                "file": false,
+                "valid": true
+            },
+            {
+                "name": "",
+                "value": "",
+                "type": null,
+                "files": null,
+                "description": null,
+                "contentType": null,
+                "enable": true,
+                "urlEncode": false,
+                "required": true,
+                "min": 0,
+                "max": 0,
+                "file": false,
+                "valid": false
+            }
+        ],
+        "body": {
+            "type": "JSON",
+            "raw": "{\n    \"ids\": [\n        \n    ]\n}",
+            "format": false,
+            "kvs": [
+                {
+                    "name": null,
+                    "value": null,
+                    "type": "text",
+                    "files": [
+
+                    ],
+                    "description": null,
+                    "contentType": null,
+                    "enable": true,
+                    "urlEncode": false,
+                    "required": true,
+                    "min": null,
+                    "max": null,
+                    "file": false,
+                    "valid": false
+                }
+            ],
+            "binary": [
+                {
+                    "name": null,
+                    "value": null,
+                    "type": null,
+                    "files": null,
+                    "description": null,
+                    "contentType": null,
+                    "enable": true,
+                    "urlEncode": false,
+                    "required": true,
+                    "min": null,
+                    "max": null,
+                    "file": false,
+                    "valid": false
+                }
+            ],
+            "jsonSchema": null,
+            "tmpFilePath": null,
+            "valid": true,
+            "xml": false,
+            "kv": false,
+            "json": true
+        },
+        "rest": [
+
+        ],
+        "url": null,
+        "followRedirects": true,
+        "autoRedirects": false,
+        "doMultipartPost": false,
+        "useEnvironment": "788cd608-8960-4efe-ab3f-dc2c44964597",
+        "arguments": [
+
+        ],
+        "authManager": null,
+        "isRefEnvironment": null,
+        "alias": null,
+        "customizeReq": false,
+        "implementation": null,
+        "mockEnvironment": false,
+        "preSize": 0,
+        "postSize": 0,
+        "ruleSize": 0,
+        "originalEnvironmentId": null
+    },
+    "bodyUploadIds": [
+
+    ],
+    "requestId": "cad63657-d15d-8a1f-e1d5-2871fc0d5228",
+    "projectId": "0e5d6b75-e125-4bd3-8485-fc2bcc3162c0",
+    "id": "b300dc2c-26a4-4082-7761-0446d90bad18",
+    "versionId": "ae156d67-3087-4dcc-a159-c2f6ee47034b"
+}
