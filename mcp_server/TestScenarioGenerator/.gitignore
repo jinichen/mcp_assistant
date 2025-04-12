@@ -1,0 +1,17 @@
+# Environment variables with API keys
+.env
+!.env.example
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Test cache
+.pytest_cache/
+
+# Generated scenarios
+generated_scenarios/
+output/
+
+# Logs
+*.log 

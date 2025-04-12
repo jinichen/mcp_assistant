@@ -1,0 +1,50 @@
+# Environment variables and secrets
+.env
+*.env
+.env.*
+!.env.example
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Testing
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+.tox/
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# Logs
+*.log
+logs/
+
+# Uploaded files and data
+uploads/
+data/
+*.data
+*.db
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Generated test files
+generated_tests/
+test_results/ 

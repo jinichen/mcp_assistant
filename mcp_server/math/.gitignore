@@ -6,9 +6,5 @@
 __pycache__/
 *.py[cod]
 
-# Search results cache
-cache/
-results/
-
 # Logs
-*.log
+*.log 

@@ -58,4 +58,12 @@ temp/
 # AI model and weight files
 *.gguf
 *.bin
-model_weights/ 
+model_weights/
+
+# MCP server related
+mcp_server/**/.env
+mcp_server/**/cache/
+mcp_server/**/data/
+mcp_server/**/results/
+mcp_server/**/output/
+mcp_server/**/generated_* 

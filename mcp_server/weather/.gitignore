@@ -1,4 +1,4 @@
-# Environment variables
+# Environment variables with API keys
 .env
 !.env.example
 
@@ -6,9 +6,9 @@
 __pycache__/
 *.py[cod]
 
-# Search results cache
+# Weather data cache
 cache/
-results/
+data/
 
 # Logs
-*.log
+*.log 
