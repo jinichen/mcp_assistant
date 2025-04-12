@@ -1,7 +1,7 @@
 # AI 助手
 
 ## 概述
-AI 助手是一个现代化的全栈应用程序，具有多模态功能，支持多种语言模型（LLM）和工具集成。它提供了一个直观的界面，用于与AI模型交互，并支持各种专业工具，如数学计算、天气查询等。
+AI 助手是一个现代化的全栈应用程序，具有多模态功能，支持多种语言模型（LLM）和工具集成。它提供了一个直观的界面，用于与AI模型交互，并支持各种专业工具，如数学计算、天气查询、测试场景生成等。
 
 ## 主要特性
 - **多LLM支持**：支持OpenAI、Google、Anthropic和NVIDIA等多种语言模型
@@ -11,6 +11,7 @@ AI 助手是一个现代化的全栈应用程序，具有多模态功能，支�
 - **多语言支持**：支持中文和英文界面
 - **实时聊天**：流畅的对话体验
 - **文件上传**：支持文档和图片上传，让AI可以分析和处理文件内容
+- **测试场景生成**：自动为API端点生成测试场景
 
 ## 系统架构
 AI 助手采用三层架构设计：
@@ -60,12 +61,43 @@ AI 助手通过Model Control Protocol (MCP)集成了多种专业工具：
 ### 可用工具
 - **数学工具**：执行数学计算
 - **天气工具**：查询天气信息
+- **测试场景生成器**：为API端点生成全面的测试场景
+- **DuckDuckGo搜索**：在网络上搜索信息
 - **更多工具**：持续集成中...
+
+### MCP架构
+MCP工具位于`mcp_server`目录中，每个工具都有自己的子目录：
+- `mcp_server/math/`：数学计算工具
+- `mcp_server/weather/`：天气信息工具
+- `mcp_server/TestScenarioGenerator/`：测试场景生成工具
+- `mcp_server/duckduckgo/`：网络搜索工具
+
+每个工具都遵循MCP协议，可以单独使用或通过集成的后端使用。
 
 ### 启动MCP服务器
 ```bash
 cd backend
 python mcp_server.py
+```
+
+## 测试场景生成器
+测试场景生成器是一个专门用于自动为API端点创建测试场景的工具：
+
+### 功能特点
+- 从API描述生成测试场景
+- 支持各种HTTP方法和请求/响应类型
+- 导出不同格式的测试用例
+- 与测试框架集成
+
+### 使用示例
+```json
+{
+  "name": "generate_test_scenarios_from_description",
+  "input": {
+    "api_description": "用户注册API，接受用户名、密码、邮箱，并返回成功或错误响应",
+    "api_path": "/api/v1/users/register"
+  }
+}
 ```
 
 ## 文件上传功能
@@ -87,7 +119,8 @@ AI 助手支持多种文件格式的上传：
 3. 开始对话，例如：
    - "计算 123 + 456"
    - "查询北京的天气"
-   - "使用数学工具计算 789 * 321"
+   - "为登录API生成测试场景"
+   - "搜索关于气候变化的信息"
    - "上传文件并分析其内容"
 
 ## 开发
@@ -102,6 +135,11 @@ ia-assistant/
 │   ├── src/         # 源代码
 │   ├── public/      # 静态资源
 │   └── package.json
+├── mcp_server/       # MCP工具服务器
+│   ├── math/        # 数学工具
+│   ├── weather/     # 天气工具
+│   ├── TestScenarioGenerator/  # 测试场景生成器
+│   └── duckduckgo/  # 网络搜索工具
 └── README.md        # 项目文档
 ```
 
@@ -112,6 +150,17 @@ ia-assistant/
 DATABASE_URL=postgresql://user:password@localhost:5432/ia_assistant
 OPENAI_API_KEY=your_openai_key
 GOOGLE_API_KEY=your_google_key
+ANTHROPIC_API_KEY=your_anthropic_key
+DEFAULT_LLM_PROVIDER=google
+DEFAULT_GOOGLE_MODEL=gemini-2.0-flash
+```
+
+#### 工具配置
+每个工具可能有自己的`.env`文件进行配置。例如，在`mcp_server/TestScenarioGenerator/.env`中：
+```env
+TEST_GENERATOR_DEFAULT_LLM_PROVIDER=google
+TEST_GENERATOR_GOOGLE_API_KEY=your_google_api_key
+TEST_GENERATOR_DEFAULT_GOOGLE_MODEL=gemini-2.0-flash
 ```
 
 #### 前端配置
@@ -129,4 +178,6 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 - FastAPI
 - PostgreSQL
 - OpenAI、Google、Anthropic和NVIDIA的AI服务
-- Tailwind CSS 
+- Tailwind CSS
+- LangChain和LangGraph用于LLM编排
+- Model Control Protocol (MCP)用于工具集成 
